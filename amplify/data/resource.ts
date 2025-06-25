@@ -1,4 +1,4 @@
-import { type ClientSchema, a, defineData } from "@aws-amplify/backend";
+import { type ClientSchema, a, defineData, string, number, date, allow } from "@aws-amplify/backend";
 
 /*== STEP 1 ===============================================================
 The section below creates a Todo database table with a "content" field. Try
@@ -54,3 +54,18 @@ Fetch records from the database and use them in your frontend component.
 // const { data: todos } = await client.models.Todo.list()
 
 // return <ul>{todos.map(todo => <li key={todo.id}>{todo.content}</li>)}</ul>
+
+export const OvertimeRequest = defineData({
+  model: {
+    employeeId: string(),
+    employeeName: string(),
+    teamLeaderId: string(),
+    hours: number(),
+    reason: string(),
+    date: date(),
+    managerStatus: string({ default: "pending" }),
+    hrStatus: string({ default: "pending" }),
+    finalStatus: string({ default: "pending" }),
+  },
+  authorization: allow.user(), // Later upgrade with allow.groups(["TeamLeader", "Manager", "HR"])
+});
