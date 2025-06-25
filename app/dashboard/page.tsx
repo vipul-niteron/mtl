@@ -1,4 +1,5 @@
 "use client";
+import DashboardPage from "./dashboard/page";
 
 import { useEffect, useState } from "react";
 import { generateClient } from "aws-amplify/data";
