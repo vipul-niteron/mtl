@@ -1,12 +1,9 @@
 "use client";
-import DashboardPage from "./dashboard/page";
 
 import { useEffect, useState } from "react";
 import { generateClient } from "aws-amplify/data";
-import type { Schema } from "@/amplify/data/resource";
-// import { useAuthenticator } from "@aws-amplify/ui-react"; // Uncomment if using role-based filters
 
-const client = generateClient<Schema>();
+const client = generateClient<any>();
 
 function getFlag(status: string) {
   if (status === "approved") return "🟢";
@@ -27,7 +24,7 @@ export default function DashboardPage() {
   const [search, setSearch] = useState<string>("");
 
   useEffect(() => {
-    client.models.OvertimeRequest.list()
+    client.models.OvertimeRequest.list({})
       .then((res: any) => setRequests(res.data ?? []))
       .finally(() => setLoading(false));
   }, []);
