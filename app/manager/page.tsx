@@ -46,7 +46,7 @@ export default function ManagerPage() {
                 <td>{req.reason}</td>
                 <td>{new Date(req.date).toLocaleDateString()}</td>
                 <td>
-                  <button onClick={() => handleAction(req.id, "approve")}>Approve</button>
+                  <button onClick={() => handleAction(req.id, "approve")}>Approved</button>
                   <button onClick={() => handleAction(req.id, "reject")}>Reject</button>
                 </td>
               </tr>
